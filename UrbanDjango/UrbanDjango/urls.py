@@ -39,17 +39,36 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# from django.contrib import admin
+# from django.urls import path
+# from task2 import views as task2_views
+# from task4 import views as task4_views
+
+#
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('/ /', task4_views.main_page, name='menu'),
+#     path('class/', TemplateView.as_view(template_name='class_template.html')),
+#     path('function/', task2_views.func_template, name='func_template'),
+#     path('platform/', task4_views.main_page, name='platform'),
+#     path('games/', task4_views.store_games, name='games'),
+#     path('cart/', task4_views.cart_page, name='cart')
+# ]
+from django.views.generic import TemplateView
 from django.contrib import admin
 from django.urls import path
-from UrbanDjango.task2 import views as task2_views
-from UrbanDjango.task3 import views as task3_views
-
+from task2.views import func_template
+from task4.views import platform, games, cart
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('class/', task2_views.class_template, name='class_template'),
-    path('function/', task2_views.func_template, name='func_template'),
-    path('platform/', task3_views.main_page, name='platform'),
-    path('games/', task3_views.store_games, name='games'),
-    path('cart/', task3_views.cart_page, name='cart')
+    # path('func', func_template),
+    # path('class/', TemplateView.as_view(template_name='class_template.html')),
+    # path('class/', ClassTemplate.as_view()),
+    # path('main', task4.views.main_page),
+    # path('games/', task4.views.store_games),
+    # path('cart/', task4.views.cart_page),
+    path('platform/', platform),
+    path('platform/games/', games),
+    path('platform/cart/', cart),
 ]
