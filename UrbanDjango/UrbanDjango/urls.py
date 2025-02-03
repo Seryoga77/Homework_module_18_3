@@ -59,6 +59,7 @@ from django.contrib import admin
 from django.urls import path
 from task2.views import func_template
 from task4.views import platform, games, cart
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -68,7 +69,10 @@ urlpatterns = [
     # path('main', task4.views.main_page),
     # path('games/', task4.views.store_games),
     # path('cart/', task4.views.cart_page),
-    path('platform/', platform),
-    path('platform/games/', games),
-    path('platform/cart/', cart),
+    # path('platform/', platform),
+    # path('platform/games/', games),
+    # path('platform/cart/', cart),
+    path('admin/', admin.site.urls),
+    path('registration/', include('task5.urls')),
+    path('', include('task5.urls')),
 ]
